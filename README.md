@@ -222,9 +222,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Ankit Choudhary**
 - 📧 Email: Ankitchoudhary7100@gmail.com
-- 💼 LinkedIn: [Connect with me](https://linkedin.com/in/yourprofile)
-- 🐱 GitHub: [@yourusername](https://github.com/yourusername)
-- 🌐 Portfolio: [Your Website](https://yourwebsite.com)
+- 💼 LinkedIn: www.linkedin.com/in/ankit-choudhary-aanku
+- 🌐 Portfolio: https://ankit-portfolio-site-86ad2dd4.codepup.app
 
 ## 🙏 **Acknowledgments**
 
