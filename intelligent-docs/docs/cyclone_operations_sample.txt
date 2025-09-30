@@ -1,0 +1,91 @@
+CYCLONE SEPARATOR OPERATIONS MANUAL
+
+SECTION 1: NORMAL OPERATING PROCEDURES
+
+1.1 Startup Sequence
+Before starting the cyclone separator system:
+- Verify all safety systems are operational
+- Check inlet gas temperature should be maintained between 850-950°C
+- Ensure cyclone inlet draft is within -12 to -20 kPa range
+- Confirm material temperature sensors are reading ambient levels
+
+The startup sequence must be followed in exact order:
+1. Open bypass damper to 50% position
+2. Start induced draft fan at minimum speed
+3. Gradually increase inlet gas temperature to 400°C
+4. Close bypass damper in 10% increments every 5 minutes
+5. Reach normal operating temperature over 30-45 minutes
+
+1.2 Normal Operation Parameters
+During normal operation, maintain these parameters:
+- Inlet Gas Temperature: 850-950°C (optimal: 900°C)
+- Outlet Gas Temperature: 750-850°C
+- Cyclone Inlet Draft: -15 ± 3 kPa
+- Cyclone Cone Draft: -12 ± 2 kPa  
+- Material Temperature: 600-700°C at discharge
+
+Monitor these parameters every 15 minutes during operation.
+Record hourly readings in the operations log.
+
+SECTION 2: SHUTDOWN PROCEDURES
+
+2.1 Planned Shutdown
+For planned maintenance shutdowns:
+1. Reduce inlet gas temperature by 50°C every 10 minutes
+2. Open bypass damper gradually as temperature decreases
+3. When inlet temperature reaches 400°C, begin material discharge
+4. Continue temperature reduction until below 200°C
+5. Stop induced draft fan only after complete cooldown
+
+Total shutdown time should be 2-4 hours depending on thermal mass.
+
+2.2 Emergency Shutdown
+In case of emergency conditions, activate emergency shutdown:
+- High temperature alarm (>1000°C): Immediate bypass activation
+- Draft pressure deviation (>±5 kPa from setpoint): Stop gas flow
+- Material temperature spike (>750°C): Emergency material discharge
+
+SECTION 3: TROUBLESHOOTING
+
+3.1 Temperature Issues
+If inlet temperature drops suddenly:
+- Check combustion air flow rate
+- Verify fuel supply pressure
+- Inspect burner flame condition
+- Review upstream equipment status
+
+If outlet temperature is consistently low:
+- Check for air leaks in ductwork
+- Verify cyclone internal condition
+- Inspect material discharge system
+
+3.2 Pressure Problems  
+Draft pressure variations often indicate:
+- Blockages in gas flow path
+- Fan performance issues
+- Ductwork structural problems
+- Material buildup in cyclone cone
+
+Investigate systematically starting from downstream equipment.
+
+SECTION 4: MAINTENANCE REQUIREMENTS
+
+4.1 Daily Checks
+- Visual inspection of external equipment
+- Check temperature and pressure readings
+- Verify emergency shutdown systems
+- Inspect material discharge area
+
+4.2 Weekly Maintenance
+- Lubricate all rotating equipment
+- Check belt tensions and alignments  
+- Clean temperature and pressure sensors
+- Test emergency shutdown sequences
+
+4.3 Monthly Maintenance
+- Internal inspection of cyclone separator
+- Check refractory lining condition
+- Calibrate all instrumentation
+- Update maintenance records
+
+Replace worn components immediately to prevent operational disruptions.

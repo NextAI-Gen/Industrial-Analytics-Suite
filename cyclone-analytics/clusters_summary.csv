@@ -1,0 +1,6 @@
+cluster_id,cluster_name,frequency_pct,avg_duration_hours,inlet_temp_mean,inlet_temp_std,outlet_temp_mean,outlet_temp_std,inlet_draft_mean,inlet_draft_std,description
+0,Normal_Operation,68.5,2.3,895.2,35.8,782.5,42.1,-15.2,3.8,Stable operation within normal parameters
+1,High_Load,18.7,1.2,932.1,28.5,815.8,31.2,-18.5,4.2,Elevated temperatures and pressures during high throughput
+2,Startup_Transient,7.2,0.8,765.3,85.2,645.1,78.9,-8.5,6.1,Temperature ramping during startup sequences
+3,Degraded_Performance,4.8,1.5,825.6,48.3,720.2,55.8,-12.8,5.5,Suboptimal performance with reduced efficiency
+4,Shutdown_Transient,0.8,0.5,456.2,125.6,385.7,98.4,-4.2,3.2,Temperature decline during controlled shutdowns

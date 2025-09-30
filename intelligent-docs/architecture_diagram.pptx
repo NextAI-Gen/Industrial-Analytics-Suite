@@ -1,0 +1,88 @@
+# RAG System Architecture Diagram
+
+## System Architecture Flow
+
+```
+┌─────────────┐    ┌──────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐
+│   PDF       │    │  Document    │    │  Chunking   │    │ Embeddings  │    │  Vector     │
+│ Documents   │───▶│  Ingestion   │───▶│  Strategy   │───▶│ Generation  │───▶│ Database    │
+│  (50+ PDFs) │    │ (PyPDF2/OCR) │    │(512 tokens) │    │(MiniLM-L6)  │    │  (FAISS)    │
+└─────────────┘    └──────────────┘    └─────────────┘    └─────────────┘    └─────────────┘
+                                                                                      │
+                                                                                      ▼
+┌─────────────┐    ┌──────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐
+│   User      │    │    Query     │    │  Retrieval  │    │    LLM      │    │  Response   │
+│   Query     │───▶│ Processing   │───▶│   Engine    │◀───│(Llama-2-7B) │◀───│with Sources │
+│"What is...?"│    │& Enhancement │    │(Top-K + ⇪) │    │   + T5      │    │& Citations  │
+└─────────────┘    └──────────────┘    └─────────────┘    └─────────────┘    └─────────────┘
+                           ▲                    ▲                    ▲
+                           │                    │                    │
+                   ┌───────────────┐    ┌─────────────┐    ┌─────────────┐
+                   │  Guardrails   │    │Confidence   │    │ Citation    │
+                   │  & Safety     │    │ Scoring     │    │Enforcement  │
+                   │   Filters     │    │(Similarity) │    │  System     │
+                   └───────────────┘    └─────────────┘    └─────────────┘
+```
+
+## Component Details
+
+### 1. Document Ingestion Pipeline
+- **PDF Processing:** PyPDF2, pdfplumber
+- **OCR Fallback:** For scanned documents
+- **Metadata Extraction:** Title, sections, page numbers
+- **Quality Validation:** Content completeness checks
+
+### 2. Chunking Strategy
+- **Method:** Semantic chunking with paragraph boundaries
+- **Size:** 512 tokens with 64-token overlap
+- **Enhancement:** Section-aware splitting for technical manuals
+- **Optimization:** Preserve context while maintaining precision
+
+### 3. Embedding & Indexing
+- **Model:** sentence-transformers/all-MiniLM-L6-v2
+- **Dimensions:** 384-dimensional vectors
+- **Index Type:** FAISS IVF-Flat with 100 centroids
+- **Storage:** Local development → Managed production
+
+### 4. Retrieval Engine
+- **Stage 1:** Dense vector search (cosine similarity)
+- **Stage 2:** BM25 keyword matching (optional)
+- **Stage 3:** Fusion ranking of results
+- **Stage 4:** Cross-encoder reranking (top-K)
+
+### 5. LLM Layer
+- **Primary Model:** Llama-2-7B-Chat (quantized)
+- **Fallback:** Flan-T5-Large for lighter deployment
+- **Context Management:** 4096 token window
+- **Temperature:** 0.1 for factual responses
+
+### 6. Guardrails System
+- **Citation Enforcement:** Mandatory source attribution
+- **Confidence Scoring:** Similarity thresholds
+- **Content Filtering:** Safety and appropriateness checks
+- **Fallback Responses:** Professional "unknown" handling
+
+## Production Deployment Architecture
+
+```
+                    ┌─── Load Balancer ───┐
+                    │                     │
+            ┌───────▼────────┐   ┌───────▼────────┐
+            │  LLM Service   │   │  LLM Service   │
+            │   (Llama-2)    │   │   (Llama-2)    │
+            └────────────────┘   └────────────────┘
+                    │                     │
+                    └─── Vector DB API ───┘
+                            │
+                ┌───────────▼───────────┐
+                │    Vector Database    │
+                │  (Pinecone/Weaviate)  │
+                └───────────────────────┘
+                            │
+                    ┌───────▼───────┐
+                    │  Redis Cache  │
+                    │ (Query Cache) │
+                    └───────────────┘
+```
+
+*This architectural design prioritizes scalability, reliability, and cost-effectiveness for enterprise deployment.*
